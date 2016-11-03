@@ -15,7 +15,7 @@ public class Animation extends GuiSimple {
         yPos = 0.0;
     }
 
-    // draw(). Is called once every frame (60 or 30 frames a second, I can not remember)
+    // draw(). Is called once every frame (60 frames a second)
     public void draw() {
         // clear the screen so that we don't redraw to the same frame
         // (if we don't do this the drawings won't go away and the circle will create a thick line)
@@ -30,6 +30,7 @@ public class Animation extends GuiSimple {
         yPos += 1.0;
     }
 
+    // main(). You'll learn what this means later
     public static void main(String[] args) {
         begin(new Animation());
     }
