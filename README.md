@@ -13,6 +13,46 @@ asdwadswad
 Then we went over the class and some of its key components.
 The Animation code along with comments describing each element is available on thisasdwrepository within the `src` folder, which you should definitely check out if you want to understand the code along with what we did today.
 
+Edit: To make things clearer, I will describe some of the specific details in the animation class which we went over in our lesson.
+
+The first thing to note is these lines of code:
+
+`
+
+    private double xPos;
+    private double yPos;
+`
+
+These initialize the variables xPos and yPos to hold doubles (numbers with a decimal point). These variables are now usable in the code but do not yet have any value assigned to them or put into them. In order to place values in to a variable you must use the `=` operator as such:
+
+`    
+    
+    xPos = 200.0;
+    yPos = 0.0;
+`
+
+Here we put `200.0` into xPos and `0.0` into yPos. These values are now accessible if we call `xPos` and `yPos` in our code.
+
+Now that our variables are initialized and are assigned values, we can use these variables. In our code, the variables are used in the `draw()` method.
+
+`
+    
+    xPos += 1.0;
+    yPos += 1.0;
+`
+
+this code increases `xPos` and `yPos` by 1, and is the same thing as writing
+
+`
+    
+    xPos = xPos + 1;
+    yPos = yPos + 1;
+`
+
+These operations are done every time the `draw()` method is called. In the background, Java code is running the `draw()` method once every frame. 
+
+(For those of you who are wondering how `draw()` is called: We cannot see how `draw()` is called because our workspace does not have the source code for the class which externally calls the `draw()` method in `Animation.java`. Instead, we have a precompiled jar file located in the `lib` directory which handles everything for us. This jar file is compiled from Wilson's java-education system found at https://github.com/Team694/java-education. This is way ahead of where we are in our lesson so you really don't have to worry about this.)
+
 Thats about it for today. Looking foward to our next lesson!
 
 ### Summary #2
