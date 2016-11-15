@@ -108,6 +108,8 @@ Until next time!
 
 ### Summary #3
 
+11/14/16
+
 We began our meeting by going over what we learned last time and then we moved on to dealing with variables.
 
 We talked over how to simulate gravity and created a diagram of variables which we needed to use in order to simulate a ball falling due to gravity. The diagram looked something like this:
