@@ -18,13 +18,13 @@ public class Animation extends GuiSimple {
     public void draw() {
         // clear the screen so that we don't redraw to the same frame
         screen.clear();
-        
-        // screen.circle(x,y,radius). This function draws a circle at coordinates xPos,yPos in pixels of radius 10 pixels.
+
+        // screen.circle( x , y , radius )
         screen.circle(200, yPos, 10);
 
         // "Bounce" when we reach the bottom of the screen
         if (yPos >= 400) {
-            velocity *= -1;   
+            velocity *= -1;
         }
         // Increase velocity to simulate gravity and change yPos by velocity
         velocity += 0.5;
