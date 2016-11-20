@@ -228,3 +228,50 @@ If you write this and give it a test, the ball should fall and bounce up when it
 That's pretty much what we did. Again, if you want to look at the whole code, it is available in this repository.
 
 Until next time!
+
+### Summary #4
+
+11/17/2016
+
+Today was not a very eventful day, but we did manage to get some work done.
+
+The first half ot the meeting was spent going over the code that we wrote last time. For those who need clarification on that, you can read Summary #3 for the last meeting.
+
+The other half was spent adding on to what we learned last time and making the ball bounce on the walls as well as the floor. The code that we used was almost identical to our previous code, except we applied it to X in addition to Y.
+
+In order to make the ball bounce on the walls, we need to set things up so that we can work with velocity along both the X and the Y axis. If we think about how we dealt with velocity in our previous meeting, we can apply the same to the X axis. In that case, the ball would have both an `xVelocity` variable and a `yVelocity` variable (which replaces our previons `velocity` variable because we're dealing with two axis). So we would initialize our variables just like we do any other variable:
+
+    private double x;
+    private double y;
+    private double xVelocity;
+    private double yVelocity;
+    
+NOTE: We can initialize multiple variables in one line, separated by commas, if they have the same type and visibility. So if you wanted to you can potentially initialize everything like this:
+
+    private double x, y, xVelocity, yVelocity;
+
+It is important to keep in mind that `xVelocity` and `yVelocity` correspond to how many pixels the ball moves per frame in the x and y direction. With that in mind we can replace our previous code for handling with velocity in the `draw()` event with this code:
+
+    x += xVelocity;
+    y += yVelocity;
+
+Now we can make the ball bounce on the walls using what we learned last time:
+
+    if (x > 400) {
+        x = 400;
+        xVelocity *= -1;
+    }
+    if (x < 0) {
+        x = 0;
+        xVelocity *= -1;
+    }
+
+#### Some extra things that you might want to look at
+
+Wilson added a new file which you should check out if you want to learn how to do more with the gui application like keyboard/mouse input or drawing images to the screen. The file is in the repository and the link is over here:
+
+https://github.com/Team694/java-edu-2017/blob/master/extras.md
+
+For those of you who want to make a bigger application, you should take a look at creating your own objects and classes. Those will allow you to create objects which have their own properties which you can modify and use. If you want to learn more about objects and classes you can look at the Java Tutorials from Oracle: https://docs.oracle.com/javase/tutorial/java/javaOO/index.html. You don't have to understand every concept from the tutorials, but skimming over it might help.
+
+See yall later!
