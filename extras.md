@@ -1,8 +1,7 @@
 # Interactivity
 
 This is a guide to adding interactivity to the stuff you guys are
-working on. __You should still be attentive when Wilson or Adris is
-speaking to the whole group, to learn about classes, types, etc.__
+working on.
 
 __Doing this stuff will not put you fundamentally ahead of the class, and
 *not* doing this stuff will *not* make you behind. This allows people who
