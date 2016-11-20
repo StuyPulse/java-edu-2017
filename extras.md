@@ -68,6 +68,11 @@ This will decrease `xPos` when the user is pressing 'A'.
     screen.ellipse(<x>, <y>, <width>, <height>);
     screen.rect(<x>, <y>, <width>, <height>); // rectangle
 
+You can also bring some images in, on a flash drive or something, and render them:
+
+    screen.image("path/to/image.png", <x>, <y>);
+    screen.image("path/to/image.png", <x>, <y>, <width>, <height>);
+
 ##### Color
 
 Import:
