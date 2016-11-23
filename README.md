@@ -17,37 +17,33 @@ Edit: To make things clearer, I will describe some of the specific details in th
 
 The first thing to note is these lines of code:
 
-`
 
     private double xPos;
     private double yPos;
-`
+
 
 These initialize the variables xPos and yPos to hold doubles (numbers with a decimal point). These variables are now usable in the code but do not yet have any value assigned to them or put into them. In order to place values in to a variable you must use the `=` operator as such:
 
-`    
     
     xPos = 200.0;
     yPos = 0.0;
-`
+
 
 Here we put `200.0` into xPos and `0.0` into yPos. These values are now accessible if we call `xPos` and `yPos` in our code.
 
 Now that our variables are initialized and are assigned values, we can use these variables. In our code, the variables are used in the `draw()` method.
 
-`
     
     xPos += 1.0;
     yPos += 1.0;
-`
+
 
 this code increases `xPos` and `yPos` by 1, and is the same thing as writing
 
-`
     
     xPos = xPos + 1;
     yPos = yPos + 1;
-`
+
 
 These operations are done every time the `draw()` method is called. In the background, Java code is running the `draw()` method once every frame. 
 
@@ -127,7 +123,6 @@ Now that we have the diagram / table in front of us we can convert that into cod
 Variables:
 
 
-
     private double yPos;
     private double velocity;
 
@@ -135,13 +130,11 @@ Variables:
 Start values:
 
 
-
     yPos = 0.0;
     velocity = 0.0;
 
 
 Each frame the variables are updated:
-
 
 
     yPos += velocity;
@@ -170,6 +163,7 @@ or in our case,
 
 In Java and in many other programming languages, the syntax for this conditional is as follows:
 
+
     if <condition> {
         <do something>
     }
@@ -177,6 +171,7 @@ In Java and in many other programming languages, the syntax for this conditional
 If `<condition>` is true, then the code inside the brackets is executed. Otherwise it is left alone and the code is not executed.
 
 In our case, our pseudocode looks something like this:
+
 
     if (yPos is greater than 400) {
         multiply velocity by -1
@@ -215,6 +210,7 @@ Each operator can be used with an equals after it as shorthand, for example `x *
 
 Lets try applying all that we have learned and write our code:
 
+
     if (yPos >= 400) {
         velocity *= -1
     }
@@ -241,6 +237,7 @@ The other half was spent adding on to what we learned last time and making the b
 
 In order to make the ball bounce on the walls, we need to set things up so that we can work with velocity along both the X and the Y axis. If we think about how we dealt with velocity in our previous meeting, we can apply the same to the X axis. In that case, the ball would have both an `xVelocity` variable and a `yVelocity` variable (which replaces our previons `velocity` variable because we're dealing with two axis). So we would initialize our variables just like we do any other variable:
 
+
     private double x;
     private double y;
     private double xVelocity;
@@ -252,10 +249,12 @@ NOTE: We can initialize multiple variables in one line, separated by commas, if 
 
 It is important to keep in mind that `xVelocity` and `yVelocity` correspond to how many pixels the ball moves per frame in the x and y direction. With that in mind we can replace our previous code for handling with velocity in the `draw()` event with this code:
 
+
     x += xVelocity;
     y += yVelocity;
 
 Now we can make the ball bounce on the walls using what we learned last time:
+
 
     if (x > 400) {
         x = 400;
@@ -305,6 +304,7 @@ Let's try creating our ball class.
 
 As you have seen in Animation.java, classes are created as such:
 
+
     public class ClassNameHere {
         // Class stuff goes here!
     }
@@ -315,6 +315,7 @@ The name of your class MUST correspond with the name of your file. For instance,
 
 You can create class (or instance) variables and methods instantiate them just like any other variable:
 
+    
     public double xPos;
     public double yPos;
     public double xVelocity;
@@ -327,4 +328,79 @@ You can create class (or instance) variables and methods instantiate them just l
         yVelocity = 0;
     }
 
+    // Add all movement code here: (Bouncing and moving)
+    public void update() {
+        xPos += xVelocity;
+        yPos += yVelocity;
+    }
 
+    // All drawing goes here:
+    public void draw(Screen screen) {
+        screen.circle(xPos, yPos, 10);
+    }
+
+#### Creating objects and accessing their methods and variables
+
+Once you create the class in a new file, you can use that class and create it as an object:
+
+
+    private Ball ball;
+
+    public Animation() {
+        ball = new Ball();
+        ball.xPos = 0;
+        ball.yPos = ball.xPos + 10;
+        ball.update();
+        ball.draw();
+    }
+
+(The code here isn't useful but it demonstrates how instance variables can be used)
+
+#### Object Constructors
+
+Constructors give one the ability to define an object's properties when it's created. For instance, when creating a ball you might want to 
+require the user to give it velocity or position values.
+
+For example, in our Ball.java file we could make a constructor like this:
+
+
+    public Ball(double xv, double yv) {
+        xVelocity = xv;
+        yVelocity = yv;
+    }
+
+Here, whenever creating a ball we require that we give the ball two values for `xVelocity` and `yVelocity`
+
+Now, our previous code initializing the ball would look like this:
+
+    
+    ball = new Ball(3.0,0.2);
+
+Here we initialize the variable ball to hold a ball with an xVelocity of 3.0 and a yVelocity of 0.2
+
+Now that we know how to create a ball, we want to make it bounce. This can be done by calling the ball's `update` and `draw` methods 
+in our Animation `draw` method as such:
+
+
+    public void draw(Screen screen) {
+        screen.clear();
+        ball.update();
+        ball.draw(screen); // we pass screen down to be used by the ball to be drawn on
+    }
+
+If we have all of this completed, we can draw our ball on the screen just like we did before and it will bounce. But this time, we don't 
+need to worry about keeping track of the ball's variables because the Ball class takes care of them for us. Additionally, we can create 
+multiple balls easily and make them all bounce with defined properties.
+
+For another example as to how classes and objects work, please take a look at `BankAccount.java` which uses class methods, variables and 
+Class objects. You should be able to understand what is going on there, and if you don't then you should definitely look at some Java 
+tutorials over the break.
+
+#### Tutorials
+
+If you still feel unsure about anything that we went over in class, you should definitely look at some Java tutorials over the break.
+Going over a tutorial series will let you get a better understanding on the Java syntax which is essential for programming in the language.
+
+I suggest you go on YouTube and look up "Beginner Java Tutorial" and follow it through, at least until you get to methods and classes.
+
+Good luck and Happy Thanksgiving everybody!
