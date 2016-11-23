@@ -275,3 +275,56 @@ https://github.com/Team694/java-edu-2017/blob/master/extras.md
 For those of you who want to make a bigger application, you should take a look at creating your own objects and classes. Those will allow you to create objects which have their own properties which you can modify and use. If you want to learn more about objects and classes you can look at the Java Tutorials from Oracle: https://docs.oracle.com/javase/tutorial/java/javaOO/index.html. You don't have to understand every concept from the tutorials, but skimming over it might help.
 
 See yall later!
+
+### Summary #5
+
+11/21/2016
+
+Today we learned about classes and objects, which make our lives a lot easier.
+
+Classes are like blueprints for objects. They define the properties that an object will have (variables, methods, ect.) and are used to define how an object behaves once it's created.
+
+An object is a specific instance of a class. For instance, in Animation.java, `screen` is an object which has methods like `circle` and `clear`.
+
+Here is an example of how you can think of classes and objects. In the example, Car is a class and a Car object is a car.
+
+There are many different types of cars out there, but we expect cars to have similar functionality: They each have their own top speed, handling, and weight (like variables). They accelerate when you press the gas pedal, turn wheels when you turn the steering wheel and slow down when you press the break pedal (like methods).
+
+In our case, we are dealing with bouncing balls. What properties should they have?
+
+As we've seen in our previous meetings, the balls have position variables and velocity variables: `xPos, yPos, xVelocity and yVelocity`
+
+For methods, what kind of functionality do they have?
+
+The balls draw themselves on to the screen and update their position (changing position by velocity and bouncing).
+
+
+Let's try creating our ball class.
+
+#### Creating classes
+
+As you have seen in Animation.java, classes are created as such:
+
+    public class ClassNameHere {
+        // Class stuff goes here!
+    }
+    
+The name of your class MUST correspond with the name of your file. For instance, in the example above this would be placed in a file named `ClassNameHere.java`.
+
+#### Class Variables and Methods
+
+You can create class (or instance) variables and methods instantiate them just like any other variable:
+
+    public double xPos;
+    public double yPos;
+    public double xVelocity;
+    public double yVelocity;
+    
+    public Ball() {
+        xPos = 200;
+        yPos = 0;
+        xVelocity = 0;
+        yVelocity = 0;
+    }
+
+
