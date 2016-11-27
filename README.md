@@ -280,7 +280,7 @@ See yall later!
 
 ### *Want to play with this stuff at home? Check out [repl.it](https://repl.it/languages/java)*
 
-Today we went over some key concepts in Java. First an foremost are...
+Today we went over some Java concepts. First an foremost, statements:
 
 ## Statements
 
