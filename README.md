@@ -2,9 +2,7 @@
 
 Java education code and lesson notes for 2016-17 year.
 
-# Lesson summaries
-
-### Summary #1
+# Summary #1
 11/01/2016
 
 Today we took a look at the Animation class which animated a circle moving down the screen.
@@ -55,7 +53,7 @@ These operations are done every time the `draw()` method is called. In the backg
 
 Thats about it for today. Looking foward to our next lesson!
 
-### Summary #2
+# Summary #2
 11/03/2016
 
 We had some new newbies who came in today!
@@ -106,7 +104,7 @@ After this we went over the code that we wrote last meeting so that everyone was
 
 Until next time!
 
-### Summary #3
+# Summary #3
 
 11/14/16
 
@@ -229,7 +227,7 @@ That's pretty much what we did. Again, if you want to look at the whole code, it
 
 Until next time!
 
-### Summary #4
+# Summary #4
 
 11/17/2016
 
@@ -245,7 +243,7 @@ In order to make the ball bounce on the walls, we need to set things up so that 
     private double y;
     private double xVelocity;
     private double yVelocity;
-    
+
 NOTE: We can initialize multiple variables in one line, separated by commas, if they have the same type and visibility. So if you wanted to you can potentially initialize everything like this:
 
     private double x, y, xVelocity, yVelocity;
@@ -275,3 +273,254 @@ https://github.com/Team694/java-edu-2017/blob/master/extras.md
 For those of you who want to make a bigger application, you should take a look at creating your own objects and classes. Those will allow you to create objects which have their own properties which you can modify and use. If you want to learn more about objects and classes you can look at the Java Tutorials from Oracle: https://docs.oracle.com/javase/tutorial/java/javaOO/index.html. You don't have to understand every concept from the tutorials, but skimming over it might help.
 
 See yall later!
+
+# <span id="summary-5">Summary #5</span>
+
+2016-11-21
+
+Today we went over some key concepts in Java. First an foremost are...
+
+## Statements
+
+Statements are individual commands. You've used few kinds of statements before:
+
+**Assignment statements** assign values to variables. For example...
+
+- `xPos = 0;`
+- `xVelocity += 2.0;`
+
+**Method call statements** tell a "method" to run. We'll discuss methods below. For example...
+
+- `screen.circle(xPos, yPos, 10.0);` runs the `circle` method of `screen`
+
+- `screen.clear();` runs the `clear` method of `screen`
+
+- `System.out.println("Hello!");` runs the `println` (pronounced "print line")
+method of `System.out`. This is a very useful method, which displays a line of
+text to the screen. Quite helpful while debugging code.
+
+**If statements** say "only run these statements if ____ is true".
+
+    if (yPos > 400.0) {
+        yVelocity *= -1.0;
+    }
+
+**Variable declaration statements** create a variable for us to use temporarily. E.g.:
+
+    double x = 1.5;
+    x += 10.0;
+    double pi = 3.14;
+    x += pi;
+
+Technically we haven't used these yet, but they're very similar to the variables
+you have used. To explain how they're "temporary", consider the following:
+
+    if (<condition>) {
+        double fred = 3.14;
+        ...
+    }
+
+the variable `fred` only exists between the '{' and '}' (inside the block). After
+the block ends, `fred` can no longer be used.
+
+Also notice the braces (`{` and `}`). A "block" is a series of statements
+surrounded by braces, and allows you to group many statements together.
+For example:
+
+    if (yPos > 400.0) {
+        yPos = 400.0;
+        yVelocity *= -1.0;
+        System.out.println("Horay");
+    }
+
+## Primitive data types
+
+When we declare a variable, we need to specify its *data type*. This specifies
+the kind of data we can store in that variable. There are _ primitive data types:
+
+4 of them are various sizes of integers:
+- A `byte` holds an integer from -128 to 127 inclusive
+- A `short` holds an integer from -2^15 to 2^15-1 inclusive
+- An `int` holds an integer from about -2billion to +2billion
+- A `long` holds an integer from about -2^63 to 2^63 inclusive
+
+Of these, `int` is the one that matters the most by far. You may never use the others.
+
+2 of them hold various sizes of floating point numbers:
+- A `float` holds a low-precision floating point number.
+- A `double` holds a high-precision floating point number.
+
+A few of you asked by `float`s matter. They don't. Don't use them. `double` is better.
+
+And finally:
+- A `char` holds a single character of text. A char is written between single quotes, e.g. `'a'`.
+
+## Classes
+
+Java allows you to define your own data types, using something called a `class`.
+
+Let's say we want to store information about a bank account in a variable.  We
+might want to include information like the balance of the account, the name of
+the owner, and the account number.
+
+**None of the primitive datatypes listed above can store all that information.
+So, we create a class.**
+
+We start with a file called `BankAccount.java` with the following contents:
+
+    public class BankAccount {
+        ...
+    }
+
+Now we choose what **information** we want to store.
+
+1. The bank balance:
+
+        public double balance;
+
+2. The name of the account owner:
+
+        public String ownerName;
+
+    What's a `String`?! `String` is a class that Java gives us
+    automatically.  A `String` holds text.
+
+3. The account number:
+
+        public int accountNumber;
+
+Putting it all together, we have:
+
+    public class BankAccount {
+        public String ownerName;
+        public double balance;
+        public int accountNumber;
+    }
+
+This could be a complete class. It says that a `BankAccount` is a package of
+three values: a `double` named `balance`, a `String` named `ownerName`, and an
+`int` named `accountNumber`.
+
+To create a `BankAccount`, we say `new BankAccount()`. Now we can use our
+class:
+
+    BankAccount myAccount = new BankAccount();
+    myAccount.ownerName = "Wilson Berkow";
+    myAccount.accountNumber = 932478234; // seems legit
+    myAccount.balance = 8000000000.0; // I have 8 biyon dollars
+
+We can refer to the fields of `myAccount` using a period `.` (called the "dot
+operator"), and can use them and assign to them just like we would with
+variables.
+
+But classes are better than just for storing a lot of data in one variable.
+Just like primitive types have built-in operations (like `+` for addition and
+`/` for division), we can define operations for our classes.
+
+We call these operations **methods**. What methods might we want for a
+`BankAccount`?
+
+We'll want to deposit money...
+
+    public void deposit(double amountToDeposit) {
+        balance += amountToDeposit;
+    }
+
+Perhaps we'll want to be polite...
+
+    public void sayHello() {
+        System.out.println("Good morning " + ownerName + "! Welcome to the bank.");
+        // We can use + to combine Strings into a bigger String.
+    }
+
+Notice that from these methods, we can talk about our fields `balance` and
+`ownerName` by name.
+
+Let's see it all together...
+
+    public class BankAccount {
+        public String ownerName;
+        public double balance;
+        public int accountNumber;
+
+        public void deposit(double amountToDeposit) {
+            balance += amountToDeposit;
+        }
+
+        public void sayHello() {
+            // We can use + to combine values into a bigger String:
+            System.out.println("Good morning " + ownerName + "!");
+            System.out.println("You have " + balance + " dollars in the bank.");
+        }
+    }
+
+Example usage of a BankAccount object:
+
+    BankAccount fredsAccount = new BankAccount();
+    fredsAccount.ownerName = "Fred Smith";
+    fredsAccount.balance = 0.0;
+    fredsAccount.accountNumber = 98537485; // or whatever
+
+    fredsAccount.deposit(100.0);
+    fredsAccount.sayHello();
+
+This will display:
+
+    Good morning Fred Smith!
+    You have 100 dollars in the bank.
+
+## Finally, constructors
+
+Phew. This has been a lot, but we have one more really important thing.
+
+In the above code, we've seen a lot of...
+
+    myAccount.<a field> = <initial value>;
+
+It's annoying to have to explicitly initialize (give an initial value to) all
+our fields for all our accounts. To solve this, we have constructors.
+
+A constructor is a block of code that will run when an object is created.
+
+This is the general structure of a constructor:
+
+    public NameOfTheClass(...parameters...) {
+        ...code...
+    }
+
+Adding a constructor to our BankAccount class leaves us with:
+
+    public class BankAccount {
+        public String ownerName;
+        public double balance;
+        public int accountNumber;
+
+        public BankAccount(String name, double startingValue, int accountNum) {
+            ownerName = name;
+            balance = startingValue;
+            accountNumber = accountNum;
+        }
+
+        public void deposit(double amountToDeposit) {
+            balance += amountToDeposit;
+        }
+
+        public void sayHello() {
+            // We can use + to combine values into a bigger String:
+            System.out.println("Good morning " + ownerName + "!");
+            System.out.println("You have " + balance + " dollars in the bank.");
+        }
+    }
+
+And now, to create a `BankAccount` object, we can say:
+
+    BankAccount fredsAccount = new BankAccount("Fred Smith", 0.0, 98537485);
+
+    // We've started fredsAccount with 0.0 dollars. Let's give him more:
+    fredsAccount.deposit(100.0);
+    fredsAccount.sayHello();
+
+## Connecting with what we did before
+
+Classes give us a lot of power. Look at the `Animation.java` and `Ball.java` files in
+the `src` directory (scroll up) for how classes can be used in our `Animation`s.

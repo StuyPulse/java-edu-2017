@@ -1,5 +1,3 @@
-//That was stupid.
-
 import gui.GuiSimple;
 
 public class Animation extends GuiSimple {
