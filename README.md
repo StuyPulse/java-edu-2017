@@ -525,3 +525,15 @@ And now, to create a `BankAccount` object, we can say:
 
 Classes give us a lot of power. Look at the `Animation.java` and `Ball.java` files in
 the `src` directory (scroll up) for how classes can be used in our `Animation`s.
+
+Finally, a recommendation from Adris:
+
+#### Tutorials
+
+If you still feel unsure about anything that we went over in class, you should
+definitely look at some Java tutorials over the break. Going over a tutorial
+series will let you get a better understanding on the Java syntax which is
+essential for programming in the language.
+
+I suggest you go on YouTube and look up "Beginner Java Tutorial" and follow it
+through, at least until you get to methods and classes.
