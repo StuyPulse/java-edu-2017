@@ -336,7 +336,7 @@ For example:
 ## Primitive data types
 
 When we declare a variable, we need to specify its *data type*. This specifies
-the kind of data we can store in that variable. There are _ primitive data types:
+the kind of data we can store in that variable. There are 7 primitive data types:
 
 4 of them are various sizes of integers:
 - A `byte` holds an integer from -128 to 127 inclusive
@@ -352,8 +352,9 @@ Of these, `int` is the one that matters the most by far. You may never use the o
 
 A few of you asked by `float`s matter. They don't. Don't use them. `double` is better.
 
-And finally:
-- A `char` holds a single character of text. A char is written between single quotes, e.g. `'a'`.
+And finally, `char` and `boolean`:
+- A `char` holds a single character of text. A char is written between single quotes, e.g:<br />`char firstLetter = 'a';`
+- A `boolean` is either `true` or `false`. E.g:<br />`boolean collegeAppsSuck = true;`
 
 ## Classes
 
@@ -520,7 +521,7 @@ And now, to create a `BankAccount` object, we can say:
     fredsAccount.deposit(100.0);
     fredsAccount.sayHello();
 
-## Connecting with what we did before
+## Using this in our animations
 
 Classes give us a lot of power. Look at the `Animation.java` and `Ball.java` files in
 the `src` directory (scroll up) for how classes can be used in our `Animation`s.
