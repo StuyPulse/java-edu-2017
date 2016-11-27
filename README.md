@@ -403,4 +403,3 @@ Going over a tutorial series will let you get a better understanding on the Java
 
 I suggest you go on YouTube and look up "Beginner Java Tutorial" and follow it through, at least until you get to methods and classes.
 
-Good luck and Happy Thanksgiving everybody!
