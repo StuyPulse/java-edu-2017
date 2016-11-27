@@ -278,6 +278,8 @@ See yall later!
 
 2016-11-21
 
+### *Want to play with this stuff at home? Check out [repl.it](https://repl.it/languages/java)*
+
 Today we went over some key concepts in Java. First an foremost are...
 
 ## Statements
