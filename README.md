@@ -23,8 +23,8 @@ The first thing to note is these lines of code:
 
 These initialize the variables xPos and yPos to hold doubles (numbers with a decimal point). These variables are now usable in the code but do not yet have any value assigned to them or put into them. In order to place values in to a variable you must use the `=` operator as such:
 
-`    
-    
+`
+
     xPos = 200.0;
     yPos = 0.0;
 `
@@ -34,7 +34,7 @@ Here we put `200.0` into xPos and `0.0` into yPos. These values are now accessib
 Now that our variables are initialized and are assigned values, we can use these variables. In our code, the variables are used in the `draw()` method.
 
 `
-    
+
     xPos += 1.0;
     yPos += 1.0;
 `
@@ -42,12 +42,12 @@ Now that our variables are initialized and are assigned values, we can use these
 this code increases `xPos` and `yPos` by 1, and is the same thing as writing
 
 `
-    
+
     xPos = xPos + 1;
     yPos = yPos + 1;
 `
 
-These operations are done every time the `draw()` method is called. In the background, Java code is running the `draw()` method once every frame. 
+These operations are done every time the `draw()` method is called. In the background, Java code is running the `draw()` method once every frame.
 
 (For those of you who are wondering how `draw()` is called: We cannot see how `draw()` is called because our workspace does not have the source code for the class which externally calls the `draw()` method in `Animation.java`. Instead, we have a precompiled jar file located in the `lib` directory which handles everything for us. This jar file is compiled from Wilson's java-education system found at https://github.com/Team694/java-education. This is way ahead of where we are in our lesson so you really don't have to worry about this.)
 
@@ -68,23 +68,23 @@ The way we create an account and log in works as follows:
 3) Type
 
  `$ /var/tmp/setmeup`
- 
+
  (without the dollar sign) and press enter to execute (this runs the file `setmeup` in the directory `/var/tmp/`
 
 4) close your terminal window (either press the X button or Alt+F4 or Ctrl+C and Ctrl+D. Keyboard shortcuts make things a lot faster as you will all eventually learn)
 
-5) Reopen a terminal window and type 
- 
+5) Reopen a terminal window and type
+
  `$ make-user`
- 
+
  Follow instructions and answer yes to the yes/no prompt.
- 
+
  There will then be further instructions on how to access your workspace and you should be able to look at the files that are found in the workspace.
 
 6) Once you are done and you have some changes that you want to save, type
 
  `$ save`
- 
+
  and your workspace should be saved and accessible next time you log on to the computer.
 
 #### Editing Files
@@ -539,3 +539,120 @@ essential for programming in the language.
 
 I suggest you go on YouTube and look up "Beginner Java Tutorial" and follow it
 through, at least until you get to methods and classes.
+
+# <span id="summary-6">Summary #6</span>
+
+2016-11-29
+
+
+
+
+# <span id="summary-7">Summary #7</span>
+
+2016-12-01
+
+In this lesson we talked more about loops, introduced arrays, and got some
+practice writing methods that use them.
+
+### The `for` loop
+
+When using `while` loops, we often wanted to count how many iterations had
+been run in a variable. Much of our code looked like this:
+
+    int count = 0;
+    while (<condition>) {
+        ... do stuff with the count variable...
+        count += 1;
+    }
+
+The `for` loop is a construct that allows us to abbreviate this as:
+
+    for (int count = 0; <condition>; count += 1) {
+        ... do stuff with the count variable...
+    }
+
+This is exactly the same as the first block of code.
+
+E.g., print the numbers from 0 to 9, inclusive:
+
+    for (int n = 0; n < 10; n += 1) {
+        System.out.println(n);
+    }
+
+### Arrays
+
+An array is a collection of items **all of the same type.**
+
+In general, the type of an array is `<itemtype>[]`, and an array is created
+with the expression `new <itemtype>[<length>]`, where `<itemtype>` is the type
+of the items that will be in the array, and `<length>` is the number of items
+it should hold.
+
+For example:
+
+    int stuyGrades = new int[10]; // an array of 10 ints
+
+`stuyGrades` is an array of length 10, in which each item is an `int`. As the
+default value for an `int` is 0, all of its values are initially `0`.
+
+Terminology note: "item" = "element" = "member" of an array
+
+#### Access
+
+To access an item in `stuyGrades`, we write `stuyGrades[<index>]` for some
+expression `<index>`.
+
+Similarly, to set an item in `stuyGrades` to some value, we write:
+
+    stuyGrades[<index>] = <value>;
+
+For example:
+
+    stuyGrades[0] = 73;
+    stuyGrades[1] = 88;
+    int firstGrade = stuyGrades[0]; // firstGrade is 73
+    System.out.println(stuyGrades[1]); // displays 88
+
+Note that the **indices start at zero**, not at one. In software, we label
+sequences of things starting from 0 (it happens to be very convenient).
+
+**Warning:** if your code tries to access an index that is *out of bounds*,
+it will crash. For example:
+
+    stuyGrades[42] // crashes!
+    stuyGrades[10] // crashes!
+    stuyGrades[-3] // crashes!
+    stuyGrades[x] // works only when x is non-negative and less than 10
+
+Notice that 10 is out of bounds, (recall that the length of `stuyGrades` is
+10).  Remember: the index of the first element is 0, so the index of the last
+element is 9, in this case. In general, the index of the last element is one
+less than the array's length.
+
+#### Length
+
+We can get the *length* of an array (the number of items it can hold) with the
+`length` property. E.g.:
+
+    int howManyGrades = stuyGrades.length; // howManyGrades is 10
+
+#### Iterating over an array
+
+We can put together what we've learned above to "iterate" over an array.
+That is, to execute a loop which runs once for every element in an array.
+
+If we want to print out every element of `stuyGrades`, we can write:
+
+    for (int i = 0; i < stuyGrades.length; i += 1) {
+        // i is short for "index"
+        System.out.println(stuyGrades[i]);
+    }
+
+#### Writing some methods
+
+Toward the end of the meeting, we started writing methods for
+doing math and operating on arrays. See the `Stats.java` file in
+`src` for what we exactly wrote.
+
+We ended with a discussion of how to find the minimum value in
+an array, and got to a good idea. This is where we'll resume on Tuesday.
