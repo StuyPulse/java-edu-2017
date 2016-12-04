@@ -1,4 +1,4 @@
-# <span id="README-top">java-edu-2017</span>
+# <b id="README-top">java-edu-2017</b>
 
 Java education code and lesson notes for 2016-17 year.
 
@@ -62,7 +62,7 @@ These operations are done every time the `draw()` method is called. In the backg
 
 Thats about it for today. Looking foward to our next lesson!
 
-# <span id="summary-2">Summary #2</span> <a href="#README-top">↑ </a>
+# <b id="summary-2">Summary #2</b> <a href="#README-top">↑ </a>
 11/03/2016
 
 We had some new newbies who came in today!
@@ -113,7 +113,7 @@ After this we went over the code that we wrote last meeting so that everyone was
 
 Until next time!
 
-# <span id="summary-3">Summary #3</span> <a href="#README-top">↑ </a>
+# <b id="summary-3">Summary #3</b> <a href="#README-top">↑ </a>
 
 
 11/14/16
@@ -237,7 +237,7 @@ That's pretty much what we did. Again, if you want to look at the whole code, it
 
 Until next time!
 
-# <span id="summary-4">Summary #4</span> <a href="#README-top">↑ </a>
+# <b id="summary-4">Summary #4</b> <a href="#README-top">↑ </a>
 
 11/17/2016
 
@@ -284,7 +284,7 @@ For those of you who want to make a bigger application, you should take a look a
 
 See yall later!
 
-# <span id="summary-5">Summary #5</span> <a href="#README-top">↑ </a>
+# <b id="summary-5">Summary #5</b> <a href="#README-top">↑ </a>
 
 2016-11-21
 
@@ -550,7 +550,7 @@ essential for programming in the language.
 I suggest you go on YouTube and look up "Beginner Java Tutorial" and follow it
 through, at least until you get to methods and classes.
 
-# <span id="summary-6">Summary #6</span> <a href="#README-top">↑ </a>
+# <b id="summary-6">Summary #6</b> <a href="#README-top">↑ </a>
 
 2016-11-29
 
@@ -682,7 +682,7 @@ Now we can do:
     // myScanner.next() will wait for the user to type characters and press
     // Enter, and will return the first word the user entered.
 
-# <span id="summary-7">Summary #7</span> <a href="#README-top">↑ </a>
+# <b id="summary-7">Summary #7</b> <a href="#README-top">↑ </a>
 
 2016-12-01
 
