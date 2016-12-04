@@ -544,12 +544,90 @@ through, at least until you get to methods and classes.
 
 2016-11-29
 
+Up till now, we've been writing graphical code which draws animations to the
+screen. The code we've been writing has used some libraries to do all this
+(libraries are code written as tools to make other programmers' work easier).
 
+Today we shifted course a bit and worked with vanilla Java. We begin with
+the standard "Hello, World!" program:
 
+    public class MyClass {
+        public static void main(String[] args) {
+            System.out.println("Hello, world!");
+        }
+    }
+
+This will print "Hello, world!" to the screen.
+
+This file declares a class `MyClass`, with no instance variables, and with
+one method: `main`. This method is different from the ones we've talked
+about: it is a `static` method.
+
+We introduced methods as operations that we define on our objects. If we create
+a `BankAccount`, we want a `deposit` method; when we work with the robot, the
+"drivetrain" of the robot (the part with the wheels and their motors) will be
+represented as an instance of class `Drivetrain`, and will have a drive method
+(called `tankDrive`).
+
+All these methods operate on an object of their class. To run them, you first
+have to make an object of that class. This makes sense: before depositing
+money, you have to make a bank account in which to deposit; before driving,
+you have to make a drivetrain.
+
+We will often, however, want to write methods that don't operate on objects of
+their class. For example, in our `BankAccount` we might want to calculate
+interest a lot, and instead of copy+pasting the code to do it, we'd like to put
+that code in a method and just say `calculateInterestOn(x, y, z)` whenever we
+need to. You don't need a bank account to calculate interest on a loan,
+thought&emdash;it's just math. For this kind of case, we can make a `static` method.
+
+**I know that's a lot of text, but read it carefully. You can't tl;dr `static`.**
+
+So, our `main` method is `static`, and it can be run without creating an
+instance of `MyClass` *(terminology note: an "instance" of a class is an object
+constructed from that class; i.e.&nbsp;<code>new&nbsp;BankAccount()</code> is
+an instance of `BankAccount`)*. But what's the big deal?
+
+**Every executable Java program must have a `main` method, and the `main`
+method is where every Java programs starts.**
+
+Even in our graphical code from previous meetings, there was a `main` method
+at the very bottom, which began our code.
+
+Don't worry, if you don't understand `String[] args` yet. This is
+called an "array of strings"--arrays are explained in the [lesson
+7 summary](#summary-7) below.
+
+### While loops
+
+A **loop** is a construct we can use to run a section of code
+many times.
+
+The simplest loop is a `while` loop. A `while` loop says "run this
+block of code repeatedly, until <some condition> becomes false."
+
+    while (<condition>) {
+        ... do things ...
+    }
+
+If we want to print out the numbers from 0 to 9, we can say:
+
+    int n = 0;
+    while (n < 10) {
+        System.out.println(n);
+        n += 1;
+    }
+
+You can tweak and run [this example at repl.it](https://repl.it/EfYb).
+
+*... more on Scanners and such soon ...*
 
 # <span id="summary-7">Summary #7</span>
 
 2016-12-01
+
+_**Side note: an object whose class is `MyClass` is called an
+*instance* of `MyClass`.** This is important terminology._
 
 In this lesson we talked more about loops, introduced arrays, and got some
 practice writing methods that use them.
