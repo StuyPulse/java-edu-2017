@@ -2,7 +2,16 @@
 
 Java education code and lesson notes for 2016-17 year.
 
-# Summary #1
+# Contents
+- <a href="#summary-1">Lesson 1</a>
+- <a href="#summary-2">Lesson 2</a>
+- <a href="#summary-3">Lesson 3</a>
+- <a href="#summary-4">Lesson 4</a>
+- <a href="#summary-5">Lesson 5</a>
+- <a href="#summary-6">Lesson 6</a>
+- <a href="#summary-7">Lesson 7</a>
+
+# <span id="summary-1">Summary #1</span>
 11/01/2016
 
 Today we took a look at the Animation class which animated a circle moving down the screen.
@@ -53,7 +62,7 @@ These operations are done every time the `draw()` method is called. In the backg
 
 Thats about it for today. Looking foward to our next lesson!
 
-# Summary #2
+# <span id="summary-2">Summary #2</span>
 11/03/2016
 
 We had some new newbies who came in today!
@@ -104,7 +113,8 @@ After this we went over the code that we wrote last meeting so that everyone was
 
 Until next time!
 
-# Summary #3
+# <span id="summary-3">Summary #3</span>
+
 
 11/14/16
 
@@ -227,7 +237,7 @@ That's pretty much what we did. Again, if you want to look at the whole code, it
 
 Until next time!
 
-# Summary #4
+# <span id="summary-4">Summary #4</span>
 
 11/17/2016
 
