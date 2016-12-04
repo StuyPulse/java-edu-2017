@@ -620,7 +620,57 @@ If we want to print out the numbers from 0 to 9, we can say:
 
 You can tweak and run [this example at repl.it](https://repl.it/EfYb).
 
-*... more on Scanners and such soon ...*
+### The Java SE 8 API Documentation
+
+Java SE 8 is "Java Standard Edition 8"--the latest version of Java.
+
+API is "Application Programming Interface". It is the interface that you,
+the programmer, use to interact with a piece of software.
+
+The [Java SE 8 API Documentation](https://docs.oracle.com/javase/8/docs/api/)
+lists all the components built in to Java, including every single class. There
+is a link to a local copy of the API on your Desktop. Open it up and Ctrl+F to
+find a class (listed in the sidebar), click on the class name, and it will show
+you all you need to know about the class.
+
+Every class has a summary of its usage, then a list of its constructors,
+methods, and other things.
+
+The Java API docs (documentation) are written in pretty technical language, but
+if you're itching to do something we haven't yet discussed (e.g. the
+`ArrayList` class), check it out.
+
+
+### User input with `Scanner`
+
+We discussed the `Scanner` class in this lesson. A `Scanner` is used to read
+user input, or read text from a file. **Scanner is not very important in the
+long-run.**
+
+
+First of all, we must import the `Scanner` class into our code. At the top of
+the file, before "public&nbsp;class...", add:
+
+    import java.util.Scanner;
+
+To create a `Scanner` which will read from user input, we write:
+
+    Scanner myScanner = new Scanner(System.in);
+
+`System.in` represents user **in**put.
+
+Now we can do:
+
+    System.out.println("Enter your age:");
+    int age = myScanner.nextInt();
+    // myScanner.nextInt() will wait for the user to type some characters
+    // and press Enter. If the user typed a number, it will return that
+    // number. Otherwise, it will crash your code.
+
+    System.out.println("Enter your first name:");
+    String name = myScanner.next();
+    // myScanner.next() will wait for the user to type characters and press
+    // Enter, and will return the first word the user entered.
 
 # <span id="summary-7">Summary #7</span>
 
@@ -662,13 +712,13 @@ E.g., print the numbers from 0 to 9, inclusive:
 An array is a collection of items **all of the same type.**
 
 In general, the type of an array is `<itemtype>[]`, and an array is created
-with the expression `new <itemtype>[<length>]`, where `<itemtype>` is the type
-of the items that will be in the array, and `<length>` is the number of items
-it should hold.
+with the expression <code>new&nbsp;&lt;itemtype&gt;[<length>]</code>, where
+`<itemtype>` is the type of the items that will be in the array, and `<length>`
+is the number of items it should hold.
 
 For example:
 
-    int stuyGrades = new int[10]; // an array of 10 ints
+    int[] stuyGrades = new int[10]; // an array of 10 ints
 
 `stuyGrades` is an array of length 10, in which each item is an `int`. As the
 default value for an `int` is 0, all of its values are initially `0`.
