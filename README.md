@@ -11,7 +11,7 @@ Java education code and lesson notes for 2016-17 year.
 - <a href="#summary-6">Lesson 6</a>
 - <a href="#summary-7">Lesson 7</a>
 
-# <span id="summary-1">Summary #1</span>
+# <span id="summary-1">Summary #1</span> <a href="#top">↑ </a>
 11/01/2016
 
 Today we took a look at the Animation class which animated a circle moving down the screen.
@@ -62,7 +62,7 @@ These operations are done every time the `draw()` method is called. In the backg
 
 Thats about it for today. Looking foward to our next lesson!
 
-# <span id="summary-2">Summary #2</span>
+# <span id="summary-2">Summary #2</span> <a href="#top">↑ </a>
 11/03/2016
 
 We had some new newbies who came in today!
@@ -113,7 +113,7 @@ After this we went over the code that we wrote last meeting so that everyone was
 
 Until next time!
 
-# <span id="summary-3">Summary #3</span>
+# <span id="summary-3">Summary #3</span> <a href="#top">↑ </a>
 
 
 11/14/16
@@ -237,7 +237,7 @@ That's pretty much what we did. Again, if you want to look at the whole code, it
 
 Until next time!
 
-# <span id="summary-4">Summary #4</span>
+# <span id="summary-4">Summary #4</span> <a href="#top">↑ </a>
 
 11/17/2016
 
@@ -284,7 +284,7 @@ For those of you who want to make a bigger application, you should take a look a
 
 See yall later!
 
-# <span id="summary-5">Summary #5</span>
+# <span id="summary-5">Summary #5</span> <a href="#top">↑ </a>
 
 2016-11-21
 
@@ -488,7 +488,7 @@ Phew. This has been a lot, but we have one more really important thing.
 
 In the above code, we've seen a lot of...
 
-    myAccount.<a field> = <initial value>;
+    myAccount.<field name> = <initial value>;
 
 It's annoying to have to explicitly initialize (give an initial value to) all
 our fields for all our accounts. To solve this, we have constructors.
@@ -550,7 +550,7 @@ essential for programming in the language.
 I suggest you go on YouTube and look up "Beginner Java Tutorial" and follow it
 through, at least until you get to methods and classes.
 
-# <span id="summary-6">Summary #6</span>
+# <span id="summary-6">Summary #6</span> <a href="#top">↑ </a>
 
 2016-11-29
 
@@ -682,7 +682,7 @@ Now we can do:
     // myScanner.next() will wait for the user to type characters and press
     // Enter, and will return the first word the user entered.
 
-# <span id="summary-7">Summary #7</span>
+# <span id="summary-7">Summary #7</span> <a href="#top">↑ </a>
 
 2016-12-01
 
