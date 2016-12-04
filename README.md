@@ -11,7 +11,7 @@ Java education code and lesson notes for 2016-17 year.
 - <a href="#summary-6">Lesson 6</a>
 - <a href="#summary-7">Lesson 7</a>
 
-# <span id="summary-1">Summary #1</span> <a href="#README-top">↑ </a>
+# <b id="summary-1">Summary #1</b> <a href="#README-top">↑ </a>
 11/01/2016
 
 Today we took a look at the Animation class which animated a circle moving down the screen.
