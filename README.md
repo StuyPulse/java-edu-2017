@@ -595,7 +595,7 @@ Even in our graphical code from previous meetings, there was a `main` method
 at the very bottom, which began our code.
 
 Don't worry, if you don't understand `String[] args` yet. This is
-called an "array of strings"--arrays are explained in the [lesson
+called an "array of strings"&emdash;arrays are explained in the [lesson
 7 summary](#summary-7) below.
 
 ### While loops
@@ -622,7 +622,7 @@ You can tweak and run [this example at repl.it](https://repl.it/EfYb).
 
 ### The Java SE 8 API Documentation
 
-Java SE 8 is "Java Standard Edition 8"--the latest version of Java.
+Java SE 8 is "Java Standard Edition 8"&emdash;the latest version of Java.
 
 API is "Application Programming Interface". It is the interface that you,
 the programmer, use to interact with a piece of software.
