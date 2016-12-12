@@ -2,6 +2,12 @@
 
 Java education code and lesson notes for 2016-17 year.
 
+<style>
+#readme tr td:first-child {
+    text-align: right;
+}
+</style>
+
 # Contents
 - <a href="#summary-1">Lesson 1</a>
 - <a href="#summary-2">Lesson 2</a>
@@ -10,6 +16,7 @@ Java education code and lesson notes for 2016-17 year.
 - <a href="#summary-5">Lesson 5</a>
 - <a href="#summary-6">Lesson 6</a>
 - <a href="#summary-7">Lesson 7</a>
+- <a href="#summary-8">Lessons 8 and 9</a>
 
 # <b id="summary-1">Summary #1</b> <a href="#README-top">↑ </a>
 11/01/2016
@@ -794,3 +801,77 @@ doing math and operating on arrays. See the `Stats.java` file in
 
 We ended with a discussion of how to find the minimum value in
 an array, and got to a good idea. This is where we'll resume on Tuesday.
+
+# <b id="summary-8"><b id="summary-9">Summaries 8 & 9</b></b> <a href="#README-top">↑ </a>
+
+2016-12-06 and -08
+
+### The stack and the heap
+
+When our code is running, Java keeps track of the variables we have created
+in something called **the stack**. When we run the following code:
+
+    int x = 12;
+    int y = x / 4;          // <--- position 1
+    x = y;                  // <--- position 2
+    int values = new int[3];
+    values[0] = 694;
+    values[1] = x;
+    values[2] = 42;         // <-- position 3
+
+When the second line (at 'position 1') executes, the stack looks like this:
+
+<table>
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>x</td><td>12</td></tr>
+<tr><td>y</td><td>3</td></tr>
+</table>
+
+After 'position 2', it looks like:
+
+<table>
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>x</td><td>3</td></tr>
+<tr><td>y</td><td>3</td></tr>
+</table>
+
+When we create an array, the items in the array are not actually stored on
+the stack. Instead, they are stored away somewhere else, where there is
+plenty of space to hold lots of data, called **the heap**.
+
+On the stack, instead of storing the items of the array, the "address" of
+the array is stored (also called a "pointer" or "reference" to the array).
+You can think of it like an actual address, describing where on the computer's
+memory chip the array data exists.
+
+So when we get to 'position 3' in the above code, this is what the stack looks like:
+
+<table>
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>x</td><td>3</td></tr>
+<tr><td>y</td><td>3</td></tr>
+<tr><td>values</td><td><em>345 W Chambers St</em></td></tr>
+</table>
+
+The heap is a place where lots of data is stored by many parts of the program.
+Somewhere on the heap will be `values`:
+
+<table>
+<tr><th>Address</th><th>Data</th></tr>
+<tr><td>...</td><td>...</td></tr>
+<tr><td><em>345 W Chambers St</em></td><td>694, 12, 42</td></tr>
+<tr><td>...</td><td>...</td></tr>
+</table>
+
+It's okay if you're a little iffy about the stack and the heap, as long as you
+have an intuition about what variables are and feel comfortable using them.
+
+I encourage you to use the [Java
+Visualizer](http://cscircles.cemc.uwaterloo.ca/java_visualize/). It's an online
+tool which allows you to see the execution of a Java program one step at a time
+(just enter your code into the box, and hit 'Visualize Execution'; then hit
+'Forward' and 'Back' to step through execution of the code). It displays
+the stack (which it labels 'frames') and the heap (which it labels 'objects')
+and shows how they are changed. Use [this link](http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Stats+%7B%0A++++public+static+void+main%28String%5B%5D+args%29+%7B%0A++++++++double+foo+%3D+0.5%3B%0A++++++++double+bar+%3D+f%28foo%29%3B%0A++++++++foo+%3D+bar%3B%0A++++++++foo+%3D+5%3B%0A++++++++int%5B%5D+values+%3D+new+int%5B5%5D%3B%0A++++++++values%5B0%5D+%3D+7%3B%0A++++++++values%5B1%5D+%3D+3%3B%0A++++++++values%5B2%5D+%3D+4%3B%0A++++++++values%5B3%5D+%3D+-2%3B%0A++++++++values%5B4%5D+%3D+12%3B%0A++++++++int+smallest+%3D+minimum%28values%29%3B%0A%0A++++++++System.out.println%28f%2813%29%29%3B%0A++++%7D%0A%0A++++public+static+int+minimum%28int%5B%5D+dataset%29+%7B%0A++++++++int+minSoFar+%3D+dataset%5B0%5D%3B%0A++++++++for+%28int+i+%3D+1%3B+i+%3C+dataset.length%3B+i%2B%2B%29+%7B%0A++++++++++++if+%28dataset%5Bi%5D+%3C+minSoFar%29+%7B%0A++++++++++++++++minSoFar+%3D+dataset%5Bi%5D%3B%0A++++++++++++%7D%0A++++++++%7D%0A++++++++return+minSoFar%3B%0A++++%7D%0A%0A++++//+An+example+method,+like+the+algebra+function+'f%28x%29+%3D+2x'%0A++++public+static+double+f%28double+x%29+%7B%0A++++++++return+2+*+x%3B%0A++++%7D%0A%0A++++public+static+void+printArray%28int%5B%5D+fred%29+%7B%0A++++++++for+%28int+i+%3D+0%3B+i+%3C+fred.length%3B+i+%2B%3D+1%29+%7B%0A++++++++++++System.out.println%28fred%5Bi%5D%29%3B%0A++++++++%7D%0A++++%7D%0A%7D&mode=display&curInstr=0)
+to see the visualization of our Stats.java class.
+
