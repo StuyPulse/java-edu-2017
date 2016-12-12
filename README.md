@@ -875,3 +875,74 @@ the stack (which it labels 'frames') and the heap (which it labels 'objects')
 and shows how they are changed. Use [this link](http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Stats+%7B%0A++++public+static+void+main%28String%5B%5D+args%29+%7B%0A++++++++double+foo+%3D+0.5%3B%0A++++++++double+bar+%3D+f%28foo%29%3B%0A++++++++foo+%3D+bar%3B%0A++++++++foo+%3D+5%3B%0A++++++++int%5B%5D+values+%3D+new+int%5B5%5D%3B%0A++++++++values%5B0%5D+%3D+7%3B%0A++++++++values%5B1%5D+%3D+3%3B%0A++++++++values%5B2%5D+%3D+4%3B%0A++++++++values%5B3%5D+%3D+-2%3B%0A++++++++values%5B4%5D+%3D+12%3B%0A++++++++int+smallest+%3D+minimum%28values%29%3B%0A%0A++++++++System.out.println%28f%2813%29%29%3B%0A++++%7D%0A%0A++++public+static+int+minimum%28int%5B%5D+dataset%29+%7B%0A++++++++int+minSoFar+%3D+dataset%5B0%5D%3B%0A++++++++for+%28int+i+%3D+1%3B+i+%3C+dataset.length%3B+i%2B%2B%29+%7B%0A++++++++++++if+%28dataset%5Bi%5D+%3C+minSoFar%29+%7B%0A++++++++++++++++minSoFar+%3D+dataset%5Bi%5D%3B%0A++++++++++++%7D%0A++++++++%7D%0A++++++++return+minSoFar%3B%0A++++%7D%0A%0A++++//+An+example+method,+like+the+algebra+function+'f%28x%29+%3D+2x'%0A++++public+static+double+f%28double+x%29+%7B%0A++++++++return+2+*+x%3B%0A++++%7D%0A%0A++++public+static+void+printArray%28int%5B%5D+fred%29+%7B%0A++++++++for+%28int+i+%3D+0%3B+i+%3C+fred.length%3B+i+%2B%3D+1%29+%7B%0A++++++++++++System.out.println%28fred%5Bi%5D%29%3B%0A++++++++%7D%0A++++%7D%0A%7D&mode=display&curInstr=0)
 to see the visualization of our Stats.java class.
 
+### Back to Arrays!
+
+We spent some time last week working on creating methods that handled arrays. More specifically we dealt with finding the minimum and the average value of an integer array.
+
+Let's say that we want to find the sum of an int array. How would we go about doing this?
+
+If we map out an algorithm for finding the sum of an int array, it would go something like this:
+
+ 1. Have a `sum` variable and set it to 0
+ 2. Loop through the array, and for each element in the array increase `sum` by the element
+ 3. Once you finish looping, the sum of the arrays is stored in variable `sum` and your work here is done.
+
+Now that we have an idea as to what our method will do, we can now begin writing our method. 
+
+_If you need help on writing methods you can check out <a href= "http://www.homeandlearn.co.uk/java/java_methods.html" > this quick little tutorial here </a>. If you're confused on static methods, be sure to reread the beginning of <a href="#summary-6"> Summary 6 </a>._
+
+We are inputting an integer array, outputing an integer, and we want our method to be accessible without creating an instance of our class. Our method would be declared like this:
+
+
+    public static int sum(int[] array) {
+        // stuff from the algorithm goes here
+    }
+
+Now we fill in our algorithm:
+
+
+    public static int sum(int[] array) {
+        int sum = 0;
+        
+        for(int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        
+        return sum;
+    }
+
+Using what we've learned from Summary 7 we can loop through the array to get our answer. Now we can apply this function to other tasks and problems, such as finding the average of an array:
+
+
+    public static int average(int[] array) {
+        int sum = sum(array);                // This assumes you've already written the previous sum() method
+        return sum / array.length;
+    }
+
+Here we don't need to redo the algorithm for finding the sum of a number because we already wrote it into a method, which we can now call and use.
+
+Another problem that we had was finding the minimum value of an integer array. Using the same process as last time, we can create our algorithm:
+
+ 1. Create a variable holding a temporary variable (let's call it `tempMinimum`)
+ 2. Scroll through the array. If you find a number less than `tempMinimum`, set `tempMinimum` to that number.
+ 3. Once you finish scrolling, you have the minimum of the entire array stored in the `tempMinimum` variable
+
+This looks good, but we don't know what to initialize the `tempMinimum` variable to. We could set it to 0, but if all of the numbers in the array are greater than 0 the minimum would be incorrect. To overcome this, we can set `tempMinimum` to be equal to any element of the array, because we will be comparing all of the elements of the array to this value anyway.
+
+With that out of the way, let's write our function. It has a similar declaration as the `sum` and `average` method because we input an integer array and output an integer:
+
+
+    public static int minimum(int[] array) {
+        int tempMinimum = array[0];               // this assumes that the array has at least 1 element in it
+        
+        for(int i = 0; i < array.length; i++) {
+            if (array[i] < tempMinimum) {
+                tempMinimum = array[i];
+            }
+        }
+        
+        return tempMinimum;
+    }
+    
+If we wanted to implement a `maximum` method, it would look almost identical to our `minimum` method, but we would switch the "less than" sign into a "greater than" sign when comparing our temporary variable with each element in the array.
+
