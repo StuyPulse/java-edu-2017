@@ -2,12 +2,6 @@
 
 Java education code and lesson notes for 2016-17 year.
 
-<style>
-#readme tr td:first-child {
-    text-align: right;
-}
-</style>
-
 # Contents
 - <a href="#summary-1">Lesson 1</a>
 - <a href="#summary-2">Lesson 2</a>
