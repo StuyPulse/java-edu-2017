@@ -11,6 +11,7 @@ Java education code and lesson notes for 2016-17 year.
 - <a href="#summary-6">Lesson 6</a>
 - <a href="#summary-7">Lesson 7</a>
 - <a href="#summary-8">Lessons 8 and 9</a>
+- <a href="#summary-10">Lesson 10</a>
 
 # <b id="summary-1">Summary #1</b> <a href="#README-top">↑ </a>
 11/01/2016
@@ -928,15 +929,177 @@ With that out of the way, let's write our function. It has a similar declaration
 
     public static int minimum(int[] array) {
         int tempMinimum = array[0];               // this assumes that the array has at least 1 element in it
-        
+
         for(int i = 0; i < array.length; i++) {
             if (array[i] < tempMinimum) {
                 tempMinimum = array[i];
             }
         }
-        
+
         return tempMinimum;
     }
-    
+
 If we wanted to implement a `maximum` method, it would look almost identical to our `minimum` method, but we would switch the "less than" sign into a "greater than" sign when comparing our temporary variable with each element in the array.
 
+# <b id="summary-10">Summary #10</b> <a href="#README-top">↑ </a>
+
+2016-12-12 (plus short lesson 2016-12-14)
+
+We discussed classes, and objects (instances of classes), and how
+they fit into the story of the stack and the heap.
+
+Let's say we have the following class:
+
+     1| public class Building {
+     2|     public int floors;
+     3|     public int heightInFeet;
+     4|
+     5|     public Building(int numberOfFloors) {
+     6|         floors = numberOfFloors;
+     7|         heightInFeet = numberOfFloors * 10; // 10 feet per floor
+     8|     }
+     9|
+    10|     public static void main(String[] args) {
+    11|         int x = 12;
+    12|         int y = x / 4;          // <--- position 1
+    13|         x = y;                  // <--- position 2
+    14|         int[] values = new int[3];
+    15|         values[0] = 694;
+    16|         values[1] = x;
+    17|         values[2] = 42;         // <-- position 3
+    18|         Building fredsHouse = new Building(y);
+    19|     }
+    20| }
+
+The code in the `main` method is the same as the code we looked at in the <a
+href="#summary-8">Lessons 8 and 9</a> summary.
+
+**Recall** that after we reach line 17 (position 3), the stack looks like this:
+
+<table>
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>x</td><td>3</td></tr>
+<tr><td>y</td><td>3</td></tr>
+<tr><td>values</td><td><em>some number representing an address</em></td></tr>
+</table>
+
+And the heap (an area on the computer's memory chip in which big amounts of
+data can be stored) looks like this:
+
+<table>
+<tr><th>Address</th><th>Data</th></tr>
+<tr><td>...</td><td>...</td></tr>
+<tr><td><em>some number representing an address</em></td><td>694, 12, 42</td></tr>
+<tr><td>...</td><td>...</td></tr>
+</table>
+
+**We'll now look at what happens when we run that last line.** You can also use
+the Java Visualizer
+[here](http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Building+%7B%0A++++public+int+floors%3B%0A++++public+int+heightInFeet%3B%0A%0A++++public+Building(int+numberOfFloors)+%7B%0A++++++++floors+%3D+numberOfFloors%3B%0A++++++++heightInFeet+%3D+numberOfFloors+\*+10%3B+//+10+feet+per+floor%0A++++%7D%0A%0A++++public+static+void+main(String%5B%5D+args)+%7B%0A++++++++int+x+%3D+12%3B%0A++++++++int+y+%3D+x+/+4%3B++++++++++//+%3C---+position+1%0A++++++++x+%3D+y%3B++++++++++++++++++//+%3C---+position+2%0A++++++++int%5B%5D+values+%3D+new+int%5B3%5D%3B%0A++++++++values%5B0%5D+%3D+694%3B%0A++++++++values%5B1%5D+%3D+x%3B%0A++++++++values%5B2%5D+%3D+42%3B+++++++++//+%3C--+position+3%0A++++++++Building+fredsHouse+%3D+new+Building(y)%3B%0A++++%7D%0A%7D%0A&mode=display&curInstr=0),
+which will automatically animate one what we're describing here, one step at
+a time (just keep hitting "Forward").
+
+Java executes the right-hand side of an assignment first: `new Building(y)`.
+
+Remember that that notation means we will run `Building`'s constructor, and
+set its first parameter to `y`.
+
+When we call the constructor, Java makes space for a `Building` object to be
+stored (the first step in *constructing* the object), and jumps from line 18 to
+line 5 (the beginning of the `Building` constructor).
+
+When we call a constructor (and also when we call a method), Java delineates
+a distinct section of the stack in which to store its variables. At line 5,
+the stack will look like this:
+
+<table>
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>x</td><td>3</td></tr>
+<tr><td>y</td><td>3</td></tr>
+<tr><td>values</td><td><em>some number representing an address</em></td></tr>
+<tr style="text-align: center !important;">
+ <td colspan=2>
+   <table><tr><td><strong>main's stack frame above; the constructor's stack frame below</strong></td></tr></table>
+ </td>
+</tr>
+<tr><td>numberOfFloors</td><td>3</td></tr>
+</table>
+
+Note the separation. `x`, `y`, and `values` are still on the stack, but they
+are in `main`'s *stack frame*, which is separate from the constructor's *stack
+frame*. The code running in a method or a constructor can only see the
+variables in its own stack frame.
+
+`numberOfFloors` gets the value 3, because we passed `y` as the first argument
+to the constructor, and the value of `y` is 3.
+
+"But what about the instance variables?!" Instance variables are just fields in
+an object, and the object is stored on the heap. The heap, at this point, looks
+like this:
+
+<table>
+<tr><th>Address</th><th>Data</th></tr>
+<tr><td>...</td><td>...</td></tr>
+<tr><td><em>some number representing an address</em></td><td>694, 12, 42</td></tr>
+<tr><td><em>another address</em></td><td><strong>floors=0, heightInFeet=0</strong></td></tr>
+<tr><td>...</td><td>...</td></tr>
+</table>
+
+The two instance variables, `floors` and `heightInFeet`, are initially 0 by
+default.  Even though they're not on the stack, Java lets us refer to instance
+variables by name, as if they were normal variables, for convenience. (We can
+do this in constructors, and in methods that are not static).
+
+When we finish line 7 (i.e. after we assign values to the variables), the stack and the heap look like this:
+
+Stack:
+
+<table>
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>x</td><td>3</td></tr>
+<tr><td>y</td><td>3</td></tr>
+<tr><td>values</td><td><em>some number representing an address</em></td></tr>
+<tr style="text-align: center !important;">
+ <td colspan=2>
+   <table><tr><td><strong>main's stack frame above; the constructor's stack frame below</strong></td></tr></table>
+ </td>
+</tr>
+<tr><td>numberOfFloors</td><td>3</td></tr>
+</table>
+
+Heap:
+
+<table>
+<tr><th>Address</th><th>Data</th></tr>
+<tr><td>...</td><td>...</td></tr>
+<tr><td><em>some number representing an address</em></td><td>694, 12, 42</td></tr>
+<tr><td><em>another address</em></td><td>floors=3, heightInFeet=30</td></tr>
+<tr><td>...</td><td>...</td></tr>
+</table>
+
+Finally, when the constructor completes, and then the variable declaration of
+line 18 finishes, they stack looks like this:
+
+Stack:
+
+<table>
+<tr><th>Name</th><th>Value</th></tr>
+<tr><td>x</td><td>3</td></tr>
+<tr><td>y</td><td>3</td></tr>
+<tr><td>values</td><td><em>some number representing an address</em></td></tr>
+<tr><td>fredsHouse</td><td><em>another address</em></td></tr>
+</table>
+
+And the heap doesn't change:
+
+<table>
+<tr><th>Address</th><th>Data</th></tr>
+<tr><td>...</td><td>...</td></tr>
+<tr><td><em>some number representing an address</em></td><td>694, 12, 42</td></tr>
+<tr><td><em>another address</em></td><td>floors=3, heightInFeet=30</td></tr>
+<tr><td>...</td><td>...</td></tr>
+</table>
+
+I encourage you to view [this example in the Java
+Visualizer](http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Building+%7B%0A++++public+int+floors%3B%0A++++public+int+heightInFeet%3B%0A%0A++++public+Building(int+numberOfFloors)+%7B%0A++++++++floors+%3D+numberOfFloors%3B%0A++++++++heightInFeet+%3D+numberOfFloors+\*+10%3B+//+10+feet+per+floor%0A++++%7D%0A%0A++++public+static+void+main(String%5B%5D+args)+%7B%0A++++++++int+x+%3D+12%3B%0A++++++++int+y+%3D+x+/+4%3B++++++++++//+%3C---+position+1%0A++++++++x+%3D+y%3B++++++++++++++++++//+%3C---+position+2%0A++++++++int%5B%5D+values+%3D+new+int%5B3%5D%3B%0A++++++++values%5B0%5D+%3D+694%3B%0A++++++++values%5B1%5D+%3D+x%3B%0A++++++++values%5B2%5D+%3D+42%3B+++++++++//+%3C--+position+3%0A++++++++Building+fredsHouse+%3D+new+Building(y)%3B%0A++++%7D%0A%7D%0A&mode=display&curInstr=0),
+to see this stuff in interactive detail.
