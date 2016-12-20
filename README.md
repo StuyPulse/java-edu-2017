@@ -808,7 +808,7 @@ in something called **the stack**. When we run the following code:
     int x = 12;
     int y = x / 4;          // <--- position 1
     x = y;                  // <--- position 2
-    int values = new int[3];
+    int[] values = new int[3];
     values[0] = 694;
     values[1] = x;
     values[2] = 42;         // <-- position 3
