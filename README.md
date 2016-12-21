@@ -12,6 +12,7 @@ Java education code and lesson notes for 2016-17 year.
 - <a href="#summary-7">Lesson 7</a>
 - <a href="#summary-8">Lessons 8 and 9</a>
 - <a href="#summary-10">Lesson 10</a>
+- <a href="#summary-11">Lesson 11</a>
 
 # <b id="summary-1">Summary #1</b> <a href="#README-top">↑ </a>
 11/01/2016
@@ -1103,3 +1104,82 @@ And the heap doesn't change:
 I encourage you to view [this example in the Java
 Visualizer](http://cscircles.cemc.uwaterloo.ca/java_visualize/#code=public+class+Building+%7B%0A++++public+int+floors%3B%0A++++public+int+heightInFeet%3B%0A%0A++++public+Building(int+numberOfFloors)+%7B%0A++++++++floors+%3D+numberOfFloors%3B%0A++++++++heightInFeet+%3D+numberOfFloors+\*+10%3B+//+10+feet+per+floor%0A++++%7D%0A%0A++++public+static+void+main(String%5B%5D+args)+%7B%0A++++++++int+x+%3D+12%3B%0A++++++++int+y+%3D+x+/+4%3B++++++++++//+%3C---+position+1%0A++++++++x+%3D+y%3B++++++++++++++++++//+%3C---+position+2%0A++++++++int%5B%5D+values+%3D+new+int%5B3%5D%3B%0A++++++++values%5B0%5D+%3D+694%3B%0A++++++++values%5B1%5D+%3D+x%3B%0A++++++++values%5B2%5D+%3D+42%3B+++++++++//+%3C--+position+3%0A++++++++Building+fredsHouse+%3D+new+Building(y)%3B%0A++++%7D%0A%7D%0A&mode=display&curInstr=0),
 to see this stuff in interactive detail.
+
+# <b id="summary-11">Summary #11</b> <a href="#README-top">↑ </a>
+
+12/20/2016
+
+The presentation and description of today's lesson can be found <a href="https://docs.google.com/document/d/15xarbXcNL3zHROXoG4bQsUMazNAMPMfwJWKf4EQhRqg/edit"> in THIS Google Doc </a>. Most of the information taught today can be found in the doc, so today's summary will be briefer than usual.
+
+Today we learned about inheritance and introduced Robot Code through Command Based Programming.
+
+## Inheritance
+
+Inheritance is used when you want a class to inherit properties from another class. For instance, if you create a Number class and want to create subclasses (like Double, Fraction, Real, Integer or anything really) that inherit the properties of Number. A real world example would be how in geometry a square is a type of rectangle (it inherits properties from rectangle), a rectangle is a parallelogram (inheriting properties from parallelogram) and a parallelogram is a type of quadrilateral.
+
+When we inherit an object in java the structure looks like this:
+
+
+    public class Rectangle extends Parallelogram {
+        // class definition here
+    }
+    
+Here, Rectangle implements all of the methods and variables from Parallelogram. They're basicall the same thing, but Rectangle is an extension to Parallelogram.
+
+An important property of extended classes is that Java can instantiate an object into a variable of its parent type. For instance, with the above diagram we can instantiate Rectangle in two ways:
+
+
+    Rectangle rect = new Rectangle();     // this works
+    Parallelogram rect = new Rectangle(); // this works, because rectangle is a type of parallelogram
+    Rectangle par = new Parallelogram();  // this will NOT work, because parallelogram is not a rectangle.
+
+Therefore, we can have a variable that can store objects of different types. However, Java can only call the methods and variables definied in the variable's class (the parent in this case). Here's an example illustrating this point:
+
+
+    public class WorldObject {
+        public void exist() {// stuff goes here}
+        public void move() {// stuff goes here}
+    }
+    
+    public class Ball extends WorldObject {
+        public void move() { // Overrided method with new stuff replacing our old "move" method }
+        public void bounce() {// new method }
+    }
+
+if we run the following code:
+
+
+    WorldObject ball = new Ball();
+    ball.exist();  // works
+    ball.move(); // works, and will run the overrided method
+    ball.bounce(); // will NOT work because "ball" is of type WorldObject and the "bounce" method is not declared in WorldObject.
+
+
+## Command Based Programming
+
+### Commands
+
+Our robot code uses Command Based Programming. This gives us control of our robot through commands, which hold code that tell the bot how to function.
+
+Commands are subclasses of the WPIlib `Command` class and they inherit the following commands: 
+
+
+    initialize   Called before command runs first time
+    execute      Called repeatedly when command is scheduled to run
+    isFinished   returns True when command is finished
+    end          Called once when isFinished is true
+    interrupt    Called when another command which requires one or more of the same subsystems is scheduled to run
+
+These methods are empty in the `Command` superclass. When we create our own commands we can define them or keep them empty.
+
+### Subsystems
+
+Subsystems group the individual parts of the robot into managable "systems". For instance, the bot has multiple wheels with motors, and we can create a Drive subsystem that has a method which sets all of the wheels to spin.
+
+Like commands, our Subsystems must also inherit a WPIlib class, which is `Subsystem`.
+
+
+
+After we went over these concepts we brought PEGasus over (our bot from two years ago during the oh-so-exciting Recycle Rush game) and tried predicting/designing subsystems and commands for the bot. We saw the grabber and decided to give it a subsystem which controlled the motor on the bottom and commands to lift it and lower it.
+
+We then looked at PEGasus1's code and analyzed the <a href="https://github.com/Team694/PEGasus1/blob/develop/src/edu/stuy/subsystems/Lift.java"> Lift subsystem </a> and its <a href="https://github.com/Team694/PEGasus1/blob/develop/src/edu/stuy/commands/LiftUpInchesCommand.java"> LiftUpInches Command </a>. (click on the links to view the code and get a better sense as to how Subsystems and Commands work)
