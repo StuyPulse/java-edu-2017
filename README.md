@@ -21,7 +21,7 @@ Today we took a look at the Animation class which animated a circle moving down 
 We first drew some helpful diagrams and pseudocode on the board which helped us understand how the real code worked.
 asdwadswad
 Then we went over the class and some of its key components.
-The Animation code along with comments describing each element is available on thisasdwrepository within the `src` folder, which you should definitely check out if you want to understand the code along with what we did today.
+The Animation code along with comments describing each element is available on this repository within the `src` folder, which you should definitely check out if you want to understand the code along with what we did today.
 
 Edit: To make things clearer, I will describe some of the specific details in the animation class which we went over in our lesson.
 
