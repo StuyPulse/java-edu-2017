@@ -180,7 +180,7 @@ or in our case,
 
 In Java and in many other programming languages, the syntax for this conditional is as follows:
 
-    if <condition> {
+    if (<condition>) {
         <do something>
     }
 
