@@ -591,7 +591,7 @@ their class. For example, in our `BankAccount` we might want to calculate
 interest a lot, and instead of copy+pasting the code to do it, we'd like to put
 that code in a method and just say `calculateInterestOn(x, y, z)` whenever we
 need to. You don't need a bank account to calculate interest on a loan,
-thought&emdash;it's just math. For this kind of case, we can make a `static` method.
+though--it's just math. For this kind of case, we can make a `static` method.
 
 **I know that's a lot of text, but read it carefully. You can't tl;dr `static`.**
 
